@@ -1,0 +1,46 @@
+
+═══════════════════════════════════════════════════════════
+🚀 DEPLOYMENT OPTIONS
+═══════════════════════════════════════════════════════════
+
+OPTION 1: Streamlit Cloud (FREE & EASY)
+───────────────────────────────────────
+1. Create GitHub repository
+2. Upload files:
+   - app.py
+   - covid_model.pkl
+   - scaler.pkl
+   - requirements.txt (create with: streamlit, pandas, numpy, joblib, matplotlib)
+3. Go to https://streamlit.io/cloud
+4. Connect GitHub repo
+5. Deploy!
+
+OPTION 2: Heroku
+───────────────────────────────────────
+1. Install Heroku CLI
+2. Create files:
+   - Procfile: web: sh setup.sh && streamlit run app.py
+   - setup.sh: (Streamlit config)
+   - requirements.txt
+3. Commands:
+   heroku login
+   heroku create your-app-name
+   git push heroku main
+
+OPTION 3: Google Cloud Run
+───────────────────────────────────────
+1. Create Dockerfile
+2. Build: gcloud builds submit --tag gcr.io/PROJECT_ID/covid-app
+3. Deploy: gcloud run deploy --image gcr.io/PROJECT_ID/covid-app --platform managed
+
+OPTION 4: AWS (EC2)
+───────────────────────────────────────
+1. Launch EC2 instance
+2. Install dependencies
+3. Run: streamlit run app.py --server.port 80
+
+📋 Required Files Checklist:
+✓ app.py (frontend)
+✓ covid_model.pkl (trained model)
+✓ scaler.pkl (feature scaler)
+✓ requirements.txt (dependencies)
